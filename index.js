@@ -65,7 +65,7 @@ app.post("/", async(req,res)=>{
             
         }
    
-    }
+    }}
 
     catch(e){
         res.json("notexist")
