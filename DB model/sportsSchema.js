@@ -12,11 +12,12 @@ const sportsSchema = new mongoose.Schema({
 const newSchema=new mongoose.Schema({
     "email":{
     type: String,
-    required: true
-    },
+    required: true},
     "password": {
     type: String,
-    required: true
+    required: true}
+},{
+    collection:"sports"
 })
 module.exports=mongoose.model("collection",newSchema);
 module.exports = mongoose.model("sportsSchema",sportsSchema);
