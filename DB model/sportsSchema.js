@@ -16,8 +16,6 @@ const newSchema=new mongoose.Schema({
     "password": {
     type: String,
     required: true}
-},{
-    collection:"collection"
 })
 module.exports=mongoose.model("collection",newSchema);
 module.exports = mongoose.model("sportsSchema",sportsSchema);
