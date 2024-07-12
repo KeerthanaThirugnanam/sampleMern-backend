@@ -1,11 +1,16 @@
-const express = require("express");
-const sportsSchema = require("../DB model/sportsSchema.js");
+const express = require("express"); 
+// import express from "express"
+
+const SportsModel = require("../DB model/sportsSchema.js");
+// import { SportsModel } from "../DB model/sportsSchema.js";
+
 const { default: mongoose } = require("mongoose");
+// import mongoose from 'mongoose';
 
 const newsRoute = express.Router();
 
 newsRoute.post("/createnews",(req,res)=>{
-    sportsSchema.create(req.body,(err,data)=>{
+    SportsModel.create(req.body,(err,data)=>{
         if(err)
             return err;
         else
@@ -14,7 +19,7 @@ newsRoute.post("/createnews",(req,res)=>{
 })
 
 newsRoute.get("/",(req,res)=>{
-    sportsSchema.find((err,data)=>{
+    SportsModel.find((err,data)=>{
         if(err)
             return err
         else
@@ -24,7 +29,7 @@ newsRoute.get("/",(req,res)=>{
 
 newsRoute.route("/updatenews/:id")
 .get((req,res)=>{
-    sportsSchema.findById(mongoose.Types.ObjectId(req.params.id),(err,data)=>{
+    SportsModel.findById(mongoose.Types.ObjectId(req.params.id),(err,data)=>{
         if(err)
             return err;
         else
@@ -33,7 +38,7 @@ newsRoute.route("/updatenews/:id")
 
 })
 .put((req,res)=>{
-    sportsSchema.findByIdAndUpdate(mongoose.Types.ObjectId(req.params.id),
+    SportsModel.findByIdAndUpdate(mongoose.Types.ObjectId(req.params.id),
     {$set:req.body},
     (err,data)=>{
         if(err)
@@ -44,7 +49,7 @@ newsRoute.route("/updatenews/:id")
 
 })
 newsRoute.delete("/deletenews/:id",(req,res)=>{
-    sportsSchema.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id),
+    SportsModel.findByIdAndDelete(mongoose.Types.ObjectId(req.params.id),
         (err,data)=>{
             if(err)
                 return err
@@ -55,3 +60,4 @@ newsRoute.delete("/deletenews/:id",(req,res)=>{
 })
 
 module.exports = newsRoute;
+// export default newsRoute;
