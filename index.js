@@ -1,7 +1,7 @@
 // import express from "express"
 const express =require("express") 
 // import bcrypt from "bcrypt"
-const bcrypt=require("bcrypt")
+//const bcrypt=require("bcrypt")
 // import cors from "cors"
 const cors =require("cors") 
 
@@ -43,7 +43,7 @@ app.get("/",cors(),(req,res)=>{
   
 })
 
-app.post("/login", async(req,res)=>{
+app.post("/", async(req,res)=>{
     const{email, password}=req.body
 
 
@@ -52,28 +52,18 @@ app.post("/login", async(req,res)=>{
         const check=await collection.findOne({email: email,password:password})
 
         if(check){
-            
+        
+            if(check){    
           
+            console.log("Password is correct.");
+            res.json("exist");
 
-            const passwordMatch = bcrypt.compare(password, check.password);
-    
-            if (passwordMatch) {
-                console.log("Password is correct.");
-                res.json("exist");
-            }else {
-                console.log("Incorrectpassword");
-                res.json("Inncorrectpassword");
-            
-            }
-
-        }
+        }
 
         else{
             res.json("Not exist")
             
         }
-   
-   
    
     }
 
