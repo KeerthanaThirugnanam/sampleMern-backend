@@ -17,7 +17,7 @@ const newSchema=new mongoose.Schema({
     type: String,
     required: true}
 },{
-    collection:"sports"
+    collection:"collection"
 })
 module.exports=mongoose.model("collection",newSchema);
 module.exports = mongoose.model("sportsSchema",sportsSchema);
